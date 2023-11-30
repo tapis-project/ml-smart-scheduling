@@ -7,7 +7,13 @@ def evaluate(model,scaler,X_test_data, Y_test_data):
     result = model.evaluate(scaler.transform(X_test_data), Y_test_data)
     for i in range(len(result)):
         print(f'{model.metrics_names[i]} — -> {result[i]}')
-
+def compare_metrics(model,scaler,X_test_data, Y_test_data):
+    metrics={}
+    result = model.evaluate(scaler.transform(X_test_data), Y_test_data)
+    for i in range(len(result)):
+        print(f'{model.metrics_names[i]} — -> {result[i]}')
+        metrics[model.metrics_names[i]]=result[i]
+    return metrics
 
 def predict_and_compare(model,scaler, X_test_data, Y_test_data):
     y_pred = model.predict(scaler.transform(X_test_data))
@@ -23,11 +29,30 @@ def predict_and_compare(model,scaler, X_test_data, Y_test_data):
     inspect_negatives_zeros_postives(y_pred_clipped)
     return y_pred_clipped
 
-
+def predict_and_compare_standardized(model,scaler, X_test_data, Y_test_data):
+    y_pred = model.predict(X_test_data)
+    print("y_pred shape : " + str(y_pred.shape))
+    ## get number of negative numbers
+    print("--- inspecting prediction values --- ")
+    inspect_negatives_zeros_postives(y_pred)
+    print(" --- inspecting original values ---")
+    inspect_negatives_zeros_postives(Y_test_data.ravel())
+    ## make it positive
+    y_pred_clipped = np.where(y_pred<0,0,y_pred)
+    print(" ---inspecting prediction values after clipping negative values to zeros --- ")
+    inspect_negatives_zeros_postives(y_pred_clipped)
+    return y_pred_clipped
 def inspect_test_data(X_test_data,Y_test_data,y_pred,low, hi, title):
     print("------------------" + title + "-----------------------")
     print("qm test:" + str(Y_test_data.to_numpy()[low:hi]))
     print("qm pred:" + str(y_pred.ravel()[low:hi]))
+    print("X test:" + str(X_test_data.iloc[low:hi,]))
+    print("------------------------------------------------------")
+
+def inspect_test_data_lstm(X_test_data,Y_test_data,y_pred,low, hi, title):
+    print("------------------" + title + "-----------------------")
+    print("qm test:" + str(Y_test_data.to_numpy()[low:hi]))
+    print("qm pred:" + str(y_pred[low:hi]))
     print("X test:" + str(X_test_data.iloc[low:hi,]))
     print("------------------------------------------------------")
 

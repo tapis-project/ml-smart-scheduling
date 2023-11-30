@@ -16,11 +16,28 @@ def create_default_model(input_shape):
     model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
     return model
 
+def create_ts_model(input_shape):
+    ### make it general
+    model = Sequential(name='queueTime')
+    model.add(Input(shape=(input_shape,)))
+    model.add(Dense(30, activation='relu', name='Hidden1'))
+    model.add(Dense(120, activation='relu', name='Hidden2'))
+    model.add(Dense(200, activation='relu', name='Hidden3'))
+    model.add(Dense(120, activation='relu', name='Hidden4'))
+    #model.add(Dense(120, activation='relu', name='Hidden5'))
+    #model.add(Dense(100, activation='relu', name='Hidden6'))
+    model.add(Dense(1, activation='linear', name='Output'))
+    model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
+    return model
+
 def create_checkpoint_cb(h5_file):
     checkpoint_cb = ModelCheckpoint(h5_file, save_best_only=True)
     early_stopping_cb = EarlyStopping(patience=30, restore_best_weights=True)
     return checkpoint_cb,early_stopping_cb
 
+def set_early_stopping():
+    early_stopping_cb = EarlyStopping(patience=30, restore_best_weights=True)
+    return early_stopping_cb
 def train_model_cb_cp(X_historydata_norm, Y_waittimedata_train, model,checkpoint_cb,
                 early_stopping_cb, h5_file, epochs, batch_size,validation_spilt):
 
@@ -30,6 +47,21 @@ def train_model_cb_cp(X_historydata_norm, Y_waittimedata_train, model,checkpoint
     print(model.summary())
     return model, hist
 
+def train_model_cb(X_historydata_norm, Y_waittimedata_train, model,
+                early_stopping_cb,epochs, batch_size,validation_spilt):
+
+    hist = model.fit(X_historydata_norm, Y_waittimedata_train, batch_size=batch_size, epochs=epochs,
+                    validation_split=validation_spilt, callbacks=[early_stopping_cb])
+    print(model.summary())
+    return model, hist
+
+def train_model_no_shuffle(X_historydata_norm, Y_waittimedata_train, model,
+                early_stopping_cb,epochs, batch_size,validation_spilt):
+
+    hist = model.fit(X_historydata_norm, Y_waittimedata_train, batch_size=batch_size, epochs=epochs,
+                    validation_split=validation_spilt, callbacks=[early_stopping_cb],verbose=0,shuffle=False)
+    print(model.summary())
+    return model, hist
 def train_model(X_historydata_norm, Y_waittimedata_train, model, epochs,batch_size,validation_spilt):
     hist = model.fit(X_historydata_norm, Y_waittimedata_train, batch_size=batch_size, epochs=epochs,
                     validation_split=validation_spilt)
@@ -148,3 +180,49 @@ def create_new_model_param(input_shape,param):
     model = create_new_arch_param(model,param)
     model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
     return model
+
+def create_one_hidden_layer_arch_param(model,nodes):
+
+    model.add(Dense(nodes, activation='relu', name='Hidden1'))
+    model.add(Dense(1, activation='linear', name='Output'))
+    return model
+
+def create_two_hidden_layers_arch_param(model,nodes):
+    model.add(Dense(100, activation='relu', name='Hidden1'))
+    model.add(Dense(nodes, activation='relu', name='Hidden2'))
+   # for i in range(param):
+   #     model.add(Dense(100, activation='relu', name='Hidden'+str(i+1)))
+    model.add(Dense(1, activation='linear', name='Output'))
+    return model
+
+def create_new_model_for_exploration(input_shape,layers,nodes):
+    ### make it general
+    model = Sequential(name='queueTime')
+    model.add(Input(shape=(input_shape,)))
+    if layers == 1:
+        model = create_one_hidden_layer_arch_param(model,nodes)
+    if layers == 2:
+        model = create_two_hidden_layers_arch_param(model, nodes)
+    model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
+    return model
+
+def create_hidden_layers(model,num_layers,layers_nodes):
+    for i in range(num_layers):
+         model.add(Dense(layers_nodes['layer'+str(i+1)], activation='relu', name='Hidden'+str(i+1)))
+    return model
+def create_fnn_model_for_exploration(input_shape,layers_nodes):
+    ### make it general
+    model = Sequential(name='queueTime')
+    model.add(Input(shape=(input_shape,)))
+    layers=layers_nodes.keys()
+    num_layers = len(layers)
+    if num_layers == 0:
+        print("Empty list was passed. Raising Exception ")
+        raise Exception("Empty layers_nodes was passed. ")
+      # model = create_one_hidden_layer_arch_param(model,layers_nodes['layer1'])
+    else:
+        model = create_hidden_layers(model,num_layers, layers_nodes)
+    model.add(Dense(1, activation='linear', name='Output'))
+    model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
+    return model
+

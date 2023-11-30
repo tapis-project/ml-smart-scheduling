@@ -9,6 +9,9 @@ def remove_default_cols(df):
 def remove_specific_col(df, col_name):
     data_set = df[df.columns[~df.columns.isin([col_name])]]
     return data_set
+def remove_cols(df, col_names):
+    data_set = df[df.columns[~df.columns.isin(col_names)]]
+    return data_set
 
 def slice_df(df,lo,hi):
     return df.iloc[lo:hi,]
@@ -20,9 +23,31 @@ def split_training_test_data(X_historydata, Y_waittimedata):
         print("shapes: " + "X test: " + str(X_historydata_test_rm.shape) + "Y test: " + str(Y_waittimedata_test.shape))
         return X_historydata_train_rm, X_historydata_test_rm, Y_waittimedata_train, Y_waittimedata_test
 
+
+def split_training_test_data_no_shuffle(X_historydata, Y_waittimedata):
+    X_historydata_train_rm, X_historydata_test_rm, Y_waittimedata_train, Y_waittimedata_test = train_test_split(
+        X_historydata, Y_waittimedata, test_size=0.25, random_state=42,shuffle=False)
+    print("shapes: " + "X train: " + str(X_historydata_train_rm.shape) + " Y train: " + str(Y_waittimedata_train.shape))
+    print("shapes: " + "X test: " + str(X_historydata_test_rm.shape) + "Y test: " + str(Y_waittimedata_test.shape))
+    return X_historydata_train_rm, X_historydata_test_rm, Y_waittimedata_train, Y_waittimedata_test
+
+
 def standardization(X_data):
     ### preprocessing Standardization
     scaler = MinMaxScaler()
+    scaler.fit(X_data)
+    #print(scaler.fit(X_data))
+    #print("data max = " + str(scaler.data_max_))
+    #print("data min = " + str(scaler.data_min_))
+    #print("data range = " + str(scaler.data_range_))
+    #print("per feature scale =" + str(scaler.scale_))
+    ### Transform the data
+    X_data_norm = scaler.transform(X_data)
+    return X_data_norm, scaler
+
+def standardization_with_scaler(X_data,scaler):
+    ### preprocessing Standardization
+
     print(scaler.fit(X_data))
     print("data max = " + str(scaler.data_max_))
     print("data min = " + str(scaler.data_min_))
