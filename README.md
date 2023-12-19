@@ -1,7 +1,15 @@
 ml-smart-scheduling
 ==============================
 
-Smart Scheduling
+We use the docker image from https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-tensorflow-notebook
+To run the docker container use the following command: 
+
+```
+
+docker run -it --rm -p 8888:8888 -v ~/<path to repo>/ml-smart-scheduling:/home/jovyan/work jupyter/tensorflow-notebook
+
+```
+
 
 Project Organization
 ------------
@@ -13,15 +21,14 @@ Project Organization
     │   ├── external       <- Data from third party sources.
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
+    |       |- result-data <- Results from experiments   
     │   └── raw            <- The original, immutable data dump.
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── notebooks          <- Jupyter notebooks. 
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
@@ -35,8 +42,12 @@ Project Organization
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
+    │   ├── analysis       <- Scripts to analyze and evaluate the models
+    │   │    └── analyze_pred.py 
+    │   │ 
     │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
+    │   │   └── make_dataset.py <- This script is from the template. Not used in  this project.
+    |   |   └── create_input_data.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
     │   │   └── build_features.py
