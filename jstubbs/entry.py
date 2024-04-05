@@ -26,13 +26,15 @@ def get_simple_config():
         {
             "source_dataset": "feb", # required; label referring to raw data file to use (TODO)
             "nbr_windows": 5, # required; number of time windows to initially divide the dataset into. 
+            "split_windows_by_rows": False, # optional, default is True: if True/not set, the windows will 
+                                            # be split by number of rows; oif False, will be split by time. 
             "bins": {
                 "bin_threshold": 10,  # corresponds to threshold in google doc
                 "bin_size_factor": 6, # multiplier for bin_threshold
                 "nbr_bins": 5 
             },
             "outliers": {
-                "drop_zero_jobs": True,
+                "drop_zero_jobs": False,
                 "drop_big_jobs": True,
                 "nbr_days_threshold": 2,
             },
@@ -198,26 +200,49 @@ def create_queue_min_bins(df,
     # put them in the largest bin. 
     df['queue_minutes_bin'] = np.where(df['queue_minutes_bin'] > (nbr_bins - 1), (nbr_bins - 1), df['queue_minutes_bin'])
     # print the final bin counts
+    print(f"First job: {df['submit'].min()}; last job: {df['submit'].max()}")
     print("Job counts by bin:", df['queue_minutes_bin'].value_counts())
     return df 
 
 
-def split_df_windows(df, nbr_windows):
+def split_df_windows(df, nbr_windows, split_by_rows=True):
     """
-    Splits a dataframe, `df`, into `nbr_windows` dataframes of (roughly) equal size. 
+    Splits a dataframe, `df`, into `nbr_windows`. This function can work in two different ones.
+     * If `split_by_rows` is true (the default), the dataframe is split so that each resulting 
+       dataframe contains (roughly) the same number of rows.
+     * Otherwise, if `split_by_rows` is False, then the dataframe is split so that each 
+       resulting dataframe spans (roughly) the same amount of time; in this case, records are split
+       based on the submit time column on the record. 
 
     """
     dfs = []
     # the fraction of records for each dataframe is equal to 1 divided by the number of windows;
     # e.g., 3 windows means each df gets 33%; 4 windows means each df gets 25%, etc. 
     fraction = 1./nbr_windows
-    for i in range(nbr_windows):
-        # the ith dataframe is the set of rows between the
-        lower_bound = np.quantile(df['submit'], i*fraction)
-        upper_bound = np.quantile(df['submit'], (i+1)*fraction)
-                                
-        dfs.append(df[ (df['submit']>=lower_bound) & (df['submit']<= upper_bound) ])
-    return dfs
+    if split_by_rows:
+        for i in range(nbr_windows):
+            # the ith dataframe is the set of rows between the i and (i+1)st quantile
+            lower_bound = np.quantile(df['submit'], i*fraction)
+            upper_bound = np.quantile(df['submit'], (i+1)*fraction)
+                                    
+            dfs.append(df[ (df['submit']>=lower_bound) & (df['submit']<= upper_bound) ])
+        return dfs
+    else:
+        # total_nbr_days is a timedelta object computing the total amount of time across the 
+        # entire dataframe
+        total_nbr_days = df['submit'].max() - df['submit'].min()
+        first_submit = df['submit'].min()
+        nbr_windows = 6
+        fraction = 1./nbr_windows
+        dfs = []
+        for i in range(nbr_windows):
+            # lower_bound and upper_bound are pandas Timestamp objects that can be used as 
+            # cutoffs to split the dataframe. 
+            lower_bound = total_nbr_days*i*fraction + df['submit'].min()
+            upper_bound = total_nbr_days*(i+1)*fraction + df['submit'].min()
+            dfs.append(df[ (df['submit']>=lower_bound) & (df['submit']<= upper_bound) ])
+            # print(f"{i}th df: from {dfs[i]['submit'].min()} to {dfs[i]['submit'].max()}")    
+        return dfs    
 
 
 def split_df_current_future(df, cutoff_fraction=0.75, cutoff_datetime=None):
@@ -231,8 +256,8 @@ def split_df_current_future(df, cutoff_fraction=0.75, cutoff_datetime=None):
     """
     # if cutoff_datetime is provided, just use that 
     if cutoff_datetime: 
-        current = df[df['submit'] <= cutoff_dateime]
-        future = df[df['submit'] > cutoff_dateime]
+        current = df[df['submit'] <= cutoff_datetime]
+        future = df[df['submit'] > cutoff_datetime]
         return current, future 
     # otherwise, we are using cutoff_fraction. 
     if not 0 < cutoff_fraction < 1:
@@ -383,11 +408,10 @@ def train_hgbc(X_train, y_train, param_grid=None):
     search = GridSearchCV(p, 
                           param_grid, 
                           n_jobs=8, 
-                          refit=True, 
-                          verbose=2)
+                          refit=True)
     search.fit(X_train, y_train)
     print(f"Score with best parameters: {search.best_score_}")
-    print(search.best_params_)
+    print("Best parameters: ", search.best_params_)
     model = search.best_estimator_
     return model 
     
@@ -455,9 +479,10 @@ def main():
                                    bin_size_factor=job["bins"].get("bin_size_factor"),
                                    nbr_bins=job["bins"].get("nbr_bins"))
         nbr_windows = job['nbr_windows']
+        split_by_rows = job.get("split_windows_by_rows", True)
         # divide the dataframe into `nbr_windows` (roughly) equally sized time windows 
         # and perform the analysis on each window in isolation. 
-        dfs = split_df_windows(df, nbr_windows)
+        dfs = split_df_windows(df, nbr_windows, split_by_rows=split_by_rows)
         # for each df/window, we perform the following tasks:
         #   1. split the df/window into current and future 
         #   2. split the current into train and test 

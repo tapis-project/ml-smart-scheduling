@@ -18,9 +18,6 @@ Starting window 0
 *********************
 Window Start: 2022-02-01 00:11:44; Window End: 2022-03-03 03:24:42; Total Jobs in Window: 24584
 Fitting 5 folds for each of 27 candidates, totalling 135 fits
-[CV] END hgbc__learning_rate=0.01, hgbc__max_depth=3, hgbc__max_iter=10; total time=   0.1s
-<...>
-[CV] END hgbc__learning_rate=0.1, hgbc__max_depth=9, hgbc__max_iter=400; total time=   3.7s
 Score with best parameters: 0.9058757062146892
 {'hgbc__learning_rate': 0.1, 'hgbc__max_depth': 9, 'hgbc__max_iter': 400}
 Performance on TEST
