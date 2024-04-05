@@ -1,3 +1,5 @@
+import json 
+import os
 import sys
 # import various paths in the notebook environment 
 sys.path.append('/home/jovyan/work/')
@@ -5,7 +7,7 @@ sys.path.append('/home/jovyan/work/src')
 sys.path.append('/home/jovyan/work/src/data')
 
 import numpy as np 
-
+from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.preprocessing import StandardScaler 
@@ -22,12 +24,12 @@ def get_simple_config():
     """
     config = [
         {
-            "source_dataset": "jan", # required; label referring to raw data file to use (TODO)
-            "nbr_windows": 1, # required; number of time windows to initially divide the dataset into. 
+            "source_dataset": "feb", # required; label referring to raw data file to use (TODO)
+            "nbr_windows": 5, # required; number of time windows to initially divide the dataset into. 
             "bins": {
-                "bin_threshold": 10,
-                "bin_size_factor": 6,
-                "nbr_bins": 5
+                "bin_threshold": 10,  # corresponds to threshold in google doc
+                "bin_size_factor": 6, # multiplier for bin_threshold
+                "nbr_bins": 5 
             },
             "outliers": {
                 "drop_zero_jobs": True,
@@ -38,21 +40,27 @@ def get_simple_config():
                 "cutoff_fraction": 0.90,
             },      
             "models": {
-                train_knn: {
+                # train_knn: {
+                #     "param_grid": {
+                #         "knn__n_neighbors": np.arange(start=1, stop=3),
+                #     }
+                # },
+                # train_svm: {
+                #     "param_grid": {
+                #         "svc__kernel": ['rbf'],
+                #         "svc__C": [1700],
+                #         "svc__gamma": [1],
+                #     },
+                # },
+                train_hgbc: {
                     "param_grid": {
-                        "knn__n_neighbors": np.arange(start=1, stop=3),
+                        "hgbc__learning_rate": [0.01, 0.1, 1],
+                        "hgbc__max_iter": [10, 100, 400],
+                        "hgbc__max_depth": [3, 5, 9],
                     }
+
                 },
-                train_svm: {
-                    "param_grid": {
-                        "svc__kernel": ['rbf'],
-                        "svc__C": [1700],
-                        "svc__gamma": [1],
-                    },
-
-                }
             }
-
         }
     ]
     return config
@@ -99,14 +107,24 @@ def get_window_config():
     ]
     return config
 
+def config_from_file():
+    """
+    Return the job config for this run from a file. By default, this
+    function looks in the file job-config.json in the cwd.
+    """
+    # note: json approach doesn't allow for passing python objects such as the 
+    #       train_* function.
+    config_path = os.environ.get("JOB_CONFIG_PATH", "job-config.json")
+    return json.load(open(config_path))
+
 
 def get_job_config():
     """
     Return the job config for this run. The config is an array of `jobs`,
     each of which can be processed independently (e.g., in parallel).
     """
-    return get_window_config()
-    # return get_simple_config()
+    # return get_window_config()
+    return get_simple_config()
 
 
 def get_raw_data(kind='jan'):
@@ -349,6 +367,31 @@ def train_svm(X_train, y_train, param_grid=None):
     return model 
 
 
+def train_hgbc(X_train, y_train, param_grid=None):
+    """
+    Train a Histogram-based Gradient Boosting Classification Tree.
+    """
+    p = Pipeline([
+        ('scale', StandardScaler()),
+        ('hgbc', HistGradientBoostingClassifier()),
+    ])
+    if not param_grid: 
+        param_grid = {
+            "hgbc__max_bins": [10, 50, 100, 200, 255, 320, 410],
+        }
+
+    search = GridSearchCV(p, 
+                          param_grid, 
+                          n_jobs=8, 
+                          refit=True, 
+                          verbose=2)
+    search.fit(X_train, y_train)
+    print(f"Score with best parameters: {search.best_score_}")
+    print(search.best_params_)
+    model = search.best_estimator_
+    return model 
+    
+    
 def compute_performance(model, X_test, y_test):
     """
     Compute the performance of a model on the test data. 
