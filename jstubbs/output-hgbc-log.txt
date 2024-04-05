@@ -1,0 +1,287 @@
+* * * * * Starting execution for job 0 * * * * *
+Initial total number of jobs:  323216
+Jobs with 0 queue minutes:  198478
+Jobs with queue minutes leq 5:  220475
+Jobs with queue minutes:  198478
+Percentage of jobs with 0 queue minutes:  0.6140723231523192
+Dropping 198478 0 minute jobs
+Dropping 1821 jobs queued for greater than 2880 minutes (2 days)
+Job counts by bin: queue_minutes_bin
+0    60506
+4    30285
+1    15776
+2     9578
+3     6772
+Name: count, dtype: int64
+
+Starting window 0
+*********************
+Window Start: 2022-02-01 00:11:44; Window End: 2022-03-03 03:24:42; Total Jobs in Window: 24584
+Fitting 5 folds for each of 27 candidates, totalling 135 fits
+[CV] END hgbc__learning_rate=0.01, hgbc__max_depth=3, hgbc__max_iter=10; total time=   0.1s
+<...>
+[CV] END hgbc__learning_rate=0.1, hgbc__max_depth=9, hgbc__max_iter=400; total time=   3.7s
+Score with best parameters: 0.9058757062146892
+{'hgbc__learning_rate': 0.1, 'hgbc__max_depth': 9, 'hgbc__max_iter': 400}
+Performance on TEST
+Accuracy on entire set:  0.9161581920903955
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9723218862121988; (1897/1951)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9620707329574577; (1877/1951)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9492567913890313; (1852/1951)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9318298308559713; (1818/1951)
+Confusion Matrix:
+[[1513   39    4    5   54]
+ [  43  288   12    7   20]
+ [  10   18  239    8   25]
+ [  13    4   15  196   34]
+ [  28    6   10   16 1818]]
+Performance on FUTURE
+Accuracy on entire set:  0.27653517690117935
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9782608695652174; (225/230)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9739130434782609; (224/230)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9652173913043478; (222/230)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9521739130434783; (219/230)
+Confusion Matrix:
+[[393 105   5  12   5]
+ [ 65  58   5   2   1]
+ [ 48  35  10   0   2]
+ [289  64  19   0   3]
+ [709 337  59  14 219]]
+
+Starting window 1
+*********************
+Window Start: 2022-03-03 03:24:47; Window End: 2022-03-25 16:32:24; Total Jobs in Window: 24584
+Fitting 5 folds for each of 27 candidates, totalling 135 fits
+[CV] END hgbc__learning_rate=0.01, hgbc__max_depth=3, hgbc__max_iter=10; total time=   0.1s
+<...>
+[CV] END hgbc__learning_rate=0.1, hgbc__max_depth=9, hgbc__max_iter=400; total time=   4.1s
+Score with best parameters: 0.917175141242938
+{'hgbc__learning_rate': 0.1, 'hgbc__max_depth': 9, 'hgbc__max_iter': 400}
+Performance on TEST
+Accuracy on entire set:  0.9267796610169492
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9910179640718563; (1655/1670)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9844311377245509; (1644/1670)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9664670658682635; (1614/1670)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9353293413173652; (1562/1670)
+Confusion Matrix:
+[[1689   41    9    5   15]
+ [  40  364   25    4   11]
+ [  10   21  298   14   30]
+ [   6    4    6  188   52]
+ [   6    5    3   17 1562]]
+Performance on FUTURE
+Accuracy on entire set:  0.5697437982919886
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9917664670658682; (1325/1336)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9041916167664671; (1208/1336)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.844311377245509; (1128/1336)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.6631736526946108; (886/1336)
+Confusion Matrix:
+[[391  47  47   9  11]
+ [103  25  64   6 117]
+ [ 63  13  84  31  80]
+ [ 38  10  22  15 242]
+ [ 41  13  61  40 886]]
+
+Starting window 2
+*********************
+Window Start: 2022-03-25 16:32:24; Window End: 2022-04-25 20:59:19; Total Jobs in Window: 24584
+Fitting 5 folds for each of 27 candidates, totalling 135 fits
+[CV] END hgbc__learning_rate=0.01, hgbc__max_depth=3, hgbc__max_iter=10; total time=   0.2s
+<...>
+[CV] END hgbc__learning_rate=0.1, hgbc__max_depth=9, hgbc__max_iter=400; total time=   5.0s
+Score with best parameters: 0.9031073446327683
+{'hgbc__learning_rate': 0.1, 'hgbc__max_depth': 9, 'hgbc__max_iter': 400}
+Performance on TEST
+Accuracy on entire set:  0.903728813559322
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9769784172661871; (679/695)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9539568345323741; (663/695)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9309352517985612; (647/695)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9035971223021583; (628/695)
+Confusion Matrix:
+[[2189   57   21    5   16]
+ [ 107  595   28    5   16]
+ [  13   24  416   15   16]
+ [  19    9   11  171   19]
+ [  16   15    7    7  628]]
+Performance on FUTURE
+Accuracy on entire set:  0.4648230988206588
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/jovyan/work/jstubbs/entry.py:421: RuntimeWarning: invalid value encountered in scalar divide
+  accuracy = correct_jobs/total_jobs_rescheduled
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: nan; (0/0)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: nan; (0/0)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: nan; (0/0)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: nan; (0/0)
+Confusion Matrix:
+[[905 395 181   1   0]
+ [100  77 104  10   0]
+ [ 34  30 151   6   0]
+ [ 21  33 138  10   0]
+ [147  38  78   0   0]]
+
+Starting window 3
+*********************
+Window Start: 2022-04-25 21:00:20; Window End: 2022-06-22 14:07:50; Total Jobs in Window: 24583
+Fitting 5 folds for each of 27 candidates, totalling 135 fits
+[CV] END hgbc__learning_rate=0.01, hgbc__max_depth=3, hgbc__max_iter=10; total time=   0.1s
+<...>
+[CV] END hgbc__learning_rate=0.1, hgbc__max_depth=9, hgbc__max_iter=400; total time=   4.3s
+Score with best parameters: 0.9123680442143478
+{'hgbc__learning_rate': 0.1, 'hgbc__max_depth': 9, 'hgbc__max_iter': 400}
+Performance on TEST
+Accuracy on entire set:  0.9109604519774012
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9866844207723036; (741/751)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9747003994673769; (732/751)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9533954727030626; (716/751)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9267643142476698; (696/751)
+Confusion Matrix:
+[[2422   73   11    6   10]
+ [  86  514   19    5    9]
+ [  30   14  223   13   16]
+ [  18    8   10  176   20]
+ [  20    3    9   14  696]]
+Performance on FUTURE
+Accuracy on entire set:  0.5518503456689712
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/jovyan/work/jstubbs/entry.py:421: RuntimeWarning: invalid value encountered in scalar divide
+  accuracy = correct_jobs/total_jobs_rescheduled
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: nan; (0/0)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: nan; (0/0)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: nan; (0/0)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: nan; (0/0)
+Confusion Matrix:
+[[1352    1    0    0    0]
+ [ 482    5    0    0    0]
+ [ 239    8    0    0    0]
+ [ 129    1    0    0    0]
+ [ 242    0    0    0    0]]
+
+Starting window 4
+*********************
+Window Start: 2022-06-22 14:09:25; Window End: 2022-07-31 23:59:09; Total Jobs in Window: 24584
+Fitting 5 folds for each of 27 candidates, totalling 135 fits
+[CV] END hgbc__learning_rate=0.01, hgbc__max_depth=3, hgbc__max_iter=10; total time=   0.1s
+<...>
+[CV] END hgbc__learning_rate=0.1, hgbc__max_depth=9, hgbc__max_iter=400; total time=   5.1s
+Score with best parameters: 0.9085875706214688
+{'hgbc__learning_rate': 0.1, 'hgbc__max_depth': 9, 'hgbc__max_iter': 400}
+Performance on TEST
+Accuracy on entire set:  0.9109604519774012
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9793103448275862; (568/580)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9551724137931035; (554/580)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9327586206896552; (541/580)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9017241379310345; (523/580)
+Confusion Matrix:
+[[2635   57    7    6   12]
+ [ 118  545   22    0   14]
+ [  23   25  207   13   13]
+ [  10    1   14  121   18]
+ [  11    9    7   14  523]]
+Performance on FUTURE
+Accuracy on entire set:  0.8779991866612444
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/opt/conda/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.6417910447761194; (86/134)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.6343283582089553; (85/134)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.6119402985074627; (82/134)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.6044776119402985; (81/134)
+Confusion Matrix:
+[[2078    0   16    0   48]
+ [  62    0    0    0    1]
+ [  65    0    0    1    3]
+ [  28    0    0    0    1]
+ [  74    0    0    1   81]]
+              precision    recall  f1-score   support
+
+           0       0.26      0.76      0.39       520
+           1       0.10      0.44      0.16       131
+           2       0.10      0.11      0.10        95
+           3       0.00      0.00      0.00       375
+           4       0.95      0.16      0.28      1338
+
+    accuracy                           0.28      2459
+   macro avg       0.28      0.29      0.19      2459
+weighted avg       0.58      0.28      0.25      2459
+ [[393 105   5  12   5]
+ [ 65  58   5   2   1]
+ [ 48  35  10   0   2]
+ [289  64  19   0   3]
+ [709 337  59  14 219]] [{'correct': 225, 'incorrect': 5, 'accuracy_score': 0.9782608695652174}, {'correct': 224, 'incorrect': 6, 'accuracy_score': 0.9739130434782609}, {'correct': 222, 'incorrect': 8, 'accuracy_score': 0.9652173913043478}, {'correct': 219, 'incorrect': 11, 'accuracy_score': 0.9521739130434783}]
+              precision    recall  f1-score   support
+
+           0       0.61      0.77      0.69       505
+           1       0.23      0.08      0.12       315
+           2       0.30      0.31      0.31       271
+           3       0.15      0.05      0.07       327
+           4       0.66      0.85      0.75      1041
+
+    accuracy                           0.57      2459
+   macro avg       0.39      0.41      0.39      2459
+weighted avg       0.49      0.57      0.51      2459
+ [[391  47  47   9  11]
+ [103  25  64   6 117]
+ [ 63  13  84  31  80]
+ [ 38  10  22  15 242]
+ [ 41  13  61  40 886]] [{'correct': 1325, 'incorrect': 11, 'accuracy_score': 0.9917664670658682}, {'correct': 1208, 'incorrect': 128, 'accuracy_score': 0.9041916167664671}, {'correct': 1128, 'incorrect': 208, 'accuracy_score': 0.844311377245509}, {'correct': 886, 'incorrect': 450, 'accuracy_score': 0.6631736526946108}]
+              precision    recall  f1-score   support
+
+           0       0.75      0.61      0.67      1482
+           1       0.13      0.26      0.18       291
+           2       0.23      0.68      0.35       221
+           3       0.37      0.05      0.09       202
+           4       0.00      0.00      0.00       263
+
+    accuracy                           0.46      2459
+   macro avg       0.30      0.32      0.26      2459
+weighted avg       0.52      0.46      0.47      2459
+ [[905 395 181   1   0]
+ [100  77 104  10   0]
+ [ 34  30 151   6   0]
+ [ 21  33 138  10   0]
+ [147  38  78   0   0]] [{'correct': 0, 'incorrect': 0, 'accuracy_score': nan}, {'correct': 0, 'incorrect': 0, 'accuracy_score': nan}, {'correct': 0, 'incorrect': 0, 'accuracy_score': nan}, {'correct': 0, 'incorrect': 0, 'accuracy_score': nan}]
+              precision    recall  f1-score   support
+
+           0       0.55      1.00      0.71      1353
+           1       0.33      0.01      0.02       487
+           2       0.00      0.00      0.00       247
+           3       0.00      0.00      0.00       130
+           4       0.00      0.00      0.00       242
+
+    accuracy                           0.55      2459
+   macro avg       0.18      0.20      0.15      2459
+weighted avg       0.37      0.55      0.40      2459
+ [[1352    1    0    0    0]
+ [ 482    5    0    0    0]
+ [ 239    8    0    0    0]
+ [ 129    1    0    0    0]
+ [ 242    0    0    0    0]] [{'correct': 0, 'incorrect': 0, 'accuracy_score': nan}, {'correct': 0, 'incorrect': 0, 'accuracy_score': nan}, {'correct': 0, 'incorrect': 0, 'accuracy_score': nan}, {'correct': 0, 'incorrect': 0, 'accuracy_score': nan}]
+              precision    recall  f1-score   support
+
+           0       0.90      0.97      0.93      2142
+           1       0.00      0.00      0.00        63
+           2       0.00      0.00      0.00        69
+           3       0.00      0.00      0.00        29
+           4       0.60      0.52      0.56       156
+
+    accuracy                           0.88      2459
+   macro avg       0.30      0.30      0.30      2459
+weighted avg       0.82      0.88      0.85      2459
+ [[2078    0   16    0   48]
+ [  62    0    0    0    1]
+ [  65    0    0    1    3]
+ [  28    0    0    0    1]
+ [  74    0    0    1   81]] [{'correct': 86, 'incorrect': 48, 'accuracy_score': 0.6417910447761194}, {'correct': 85, 'incorrect': 49, 'accuracy_score': 0.6343283582089553}, {'correct': 82, 'incorrect': 52, 'accuracy_score': 0.6119402985074627}, {'correct': 81, 'incorrect': 53, 'accuracy_score': 0.6044776119402985}]
