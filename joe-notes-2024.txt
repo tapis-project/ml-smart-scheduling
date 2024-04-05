@@ -1,0 +1,68 @@
+Run the jupyter server (from outside the repo):
+docker run -it --rm -p 8889:8888 -v $(pwd)/ml-smart-scheduling:/home/jovyan/work jupyter/tensorflow-notebook
+
+Rust code that produces the SQL tables:
+https://github.com/tapis-project/smartsched_rust
+
+
+
+Input Features
+***************
+From SQL:
+reqcpus -- Number of CPUs requested by this job
+nnodes -- Number of nodes requested by this job
+max_minutes -- The number of minutes requested by this job
+backlog_minutes -- The sum of the max_minutes attributes for all jobs in the queue when this job was submitted. 
+blacklog_num_jobs -- Number of jobs in queue when this job was submitted. 
+
+Added by Python
+running_num_jobs -- number of jobs currently running when this job was submitted 
+running_minutes -- Total requests number of minutes for all jobs that are running at submission time. (Add up max_minutes for all running jobs).
+
+Not used for prediction:
+run_minutes -- Actual running time (number of minutes) of all jobs that were running at submission time (this is information we don't have, also, it doesn't deduct the minutes the jobs have already been running for)
+
+Could maybe add: 
+running_requested_remaining_minutes -- Sum of request time minus the amount they have run for 
+
+Was hard to find the actual definitions of these as well as the original definitions of the SQL table
+
+Target
+***********
+queue_minutes -- Amount of time the job sat in queue before starting (i.e., start_time - submit_time)
+
+Can also think in bins. 
+
+Let P := "provision time", that is, the amount of time it takes to provision infrastructure to run a job. 
+  * If queue_minutes < P, we should definitely not re-schedule the job 
+
+More generally, we could assume there is a tollerance factor, n, and assume: 
+  * If queue_minutes < nP then we should not re-schedule the job 
+  
+We can then view the problem as a classification problem where we classify queue_minutes into one of the following bins:
+    P,     2P,     3P,     ...,   nP,     (n+1)P,     (n+2)P,    ...
+  <--  shouldn't be re-scheduled -->     <--   should be re-scheduled  -->                
+  
+  
+Things to try:
+1. Bins for classification 
+2. Outlier detection and treatment -- even if we throw out more than is "proper" to get some initial insight
+  a. throw out jobs that have 0 queue minutes
+  b. jobs that sit in queue for > 48 hours
+3. RNN and LSTM -- https://www.tensorflow.org/tutorials/structured_data/time_series
+4. Not exactly a time series the way we have cast it
+  - jobs do have a time stamp, but does the timestamp matter, or is it just the queue state? 
+  - also, multiple jobs can be submitted at the same time
+  It would be a time series if we the target were backlog_minutes or backlog_num_jobs, 
+  but these do seem
+  
+5. Per-user, or bring user into it, because they could
+6. Day vs night -- periodicity?
+
+
+
+Notes on SVM Hyperparamets: 
+1. function (i.e., kernel): 'linear', 'poly', 'rbf' (default), 'sigmoid', 'precomputed'
+  1a. degree (int): for 'poly'
+2. regularization (i.e., C): higher C prioritizes fit; lower C prioritizes avoiding overfitting 
+3. kernel coeff (i.e., gamma): "scale" (default), uses 1; "auto", uses 1/n_features, or a float >0
