@@ -24,10 +24,10 @@ def get_simple_config():
     """
     config = [
         {
-            "source_dataset": "feb", # required; label referring to raw data file to use (TODO)
-            "nbr_windows": 5, # required; number of time windows to initially divide the dataset into. 
+            "source_dataset": "feb_skx", # required; label referring to raw data file to use (TODO)
+            "nbr_windows": 6, # required; number of time windows to initially divide the dataset into. 
             "split_windows_by_rows": False, # optional, default is True: if True/not set, the windows will 
-                                            # be split by number of rows; oif False, will be split by time. 
+                                            # be split by number of rows; if False, will be split by time. 
             "bins": {
                 "bin_threshold": 10,  # corresponds to threshold in google doc
                 "bin_size_factor": 6, # multiplier for bin_threshold
@@ -136,6 +136,10 @@ def get_raw_data(kind='jan'):
     # TODO: update to make this better
     if kind == 'jan':
         return create_input_data.read_data(csv_file_name="../data/processed/lookback35_anon_jan1_feb1.csv", parse_dates_col=[4,5,6])
+    if kind == 'jan_skx':
+        return create_input_data.read_data(csv_file_name="../data/raw/skx_anon_jobs_1Jan2022_1Feb2022_normal_sorted.csv", parse_dates_col=[4,5,6])
+    if kind == 'feb_skx':
+        return create_input_data.read_data(csv_file_name="../data/raw/skx_anon_jobs_1Feb2022_1Aug2022_normal_sorted.csv", parse_dates_col=[4,5,6])
     return create_input_data.read_data(csv_file_name="../data/processed/lookback35_anon_feb1_aug1.csv", parse_dates_col=[4,5,6])
 
 
@@ -192,6 +196,10 @@ def create_queue_min_bins(df,
     """
     # actual size of a bin, in minutes
     bin_size = bin_threshold * bin_size_factor
+    print(f"Size of each bin: {bin_size} (minutes)")
+    for i in range(nbr_bins - 1):
+        print(f"Bin {i} minute range: {i*bin_size} to {(i+1)*bin_size} minutes")
+    print(f"Bin {nbr_bins - 1} range: Greater than {(nbr_bins - 1)*bin_size} minutes")
     # first, create the column as a float
     df['queue_minutes_bin'] = df['queue_minutes'] / bin_size
     # then, cast to int 
@@ -230,9 +238,8 @@ def split_df_windows(df, nbr_windows, split_by_rows=True):
     else:
         # total_nbr_days is a timedelta object computing the total amount of time across the 
         # entire dataframe
-        total_nbr_days = df['submit'].max() - df['submit'].min()
         first_submit = df['submit'].min()
-        nbr_windows = 6
+        total_nbr_days = df['submit'].max() - first_submit
         fraction = 1./nbr_windows
         dfs = []
         for i in range(nbr_windows):
