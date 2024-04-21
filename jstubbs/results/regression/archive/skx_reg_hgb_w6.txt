@@ -1,0 +1,520 @@
+
+
+* * * * * Starting execution for job 0 * * * * *
+Initial total number of jobs:  199744
+Jobs with 0 queue minutes:  57935
+Jobs with queue minutes leq 5:  89998
+Jobs with queue minutes:  57935
+Percentage of jobs with 0 queue minutes:  0.2900462592117911
+Dropping 5831 jobs queued for greater than 2880 minutes (2 days)
+0th df: from 2022-02-01 00:06:58 to 2022-03-03 04:05:20
+1th df: from 2022-03-03 04:08:00 to 2022-04-02 08:02:26
+2th df: from 2022-04-02 08:05:22 to 2022-05-02 12:02:18
+3th df: from 2022-05-02 12:04:54 to 2022-06-01 15:50:05
+4th df: from 2022-06-01 16:12:56 to 2022-07-01 19:51:47
+5th df: from 2022-07-01 20:00:29 to 2022-07-31 23:58:14
+
+Starting window 0
+*********************
+Window Start: 2022-02-01 00:06:58; Window End: 2022-03-03 04:05:20; Total Jobs in Window: 35812
+Score with best parameters: 0.8159893064064251
+Best parameters:  {'hgbc_lr__learning_rate': 0.1, 'hgbc_lr__max_depth': 9, 'hgbc_lr__max_iter': 400}
+--- Performance on TEST ---
+y_val (6446,)
+Job counts by bin: queue_minutes_pred_bin
+0    4781
+4    1133
+1     255
+2     173
+3     104
+Name: count, dtype: int64
+y_val (6446,)
+Job counts by bin: queue_minutes_pred_bin
+0    5061
+4     984
+1     209
+2     117
+3      75
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.8346658887754637
+Regression: Mean absolute error on entire set:  77.74529558606936
+Regression: mean squared error on entire set:  220.26915720166292
+Accuracy on entire set after classification:  0.8720136518771331
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.8976169461606355; (1017/1133)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.8649602824360106; (980/1133)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.8287731685789939; (939/1133)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.7978817299205648; (904/1133)
+Confusion Matrix:
+[[4646  182   75   42  116]
+ [  99   39   21   13   37]
+ [  21   17   25   13   41]
+ [   5    7   21    7   35]
+ [  10   10   31   29  904]]
+--- Performance on FUTURE ---
+y_val (3582,)
+Job counts by bin: queue_minutes_pred_bin
+0    2177
+1     647
+4     448
+2     200
+3     110
+Name: count, dtype: int64
+y_val (3582,)
+Job counts by bin: queue_minutes_pred_bin
+0    2626
+4     629
+1     210
+2      69
+3      48
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.6852580222118276
+Regression: Mean absolute error on entire set:  129.77247883472828
+Regression: mean squared error on entire set:  314.64970804787623
+Accuracy on entire set after classification:  0.6970965940815187
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9308035714285714; (417/448)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9107142857142857; (408/448)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.875; (392/448)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8392857142857143; (376/448)
+Confusion Matrix:
+[[2024  477   53   41   31]
+ [  92   79   24    6    9]
+ [  22   14    9    8   16]
+ [   4    6   13    9   16]
+ [  35   71  101   46  376]]
+
+Starting window 1
+*********************
+Window Start: 2022-03-03 04:08:00; Window End: 2022-04-02 08:02:26; Total Jobs in Window: 31191
+Score with best parameters: 0.9077139369886373
+Best parameters:  {'hgbc_lr__learning_rate': 0.1, 'hgbc_lr__max_depth': 9, 'hgbc_lr__max_iter': 500}
+--- Performance on TEST ---
+y_val (5615,)
+Job counts by bin: queue_minutes_pred_bin
+0    3399
+4    1244
+1     509
+2     295
+3     168
+Name: count, dtype: int64
+y_val (5615,)
+Job counts by bin: queue_minutes_pred_bin
+0    3640
+4    1232
+1     380
+2     195
+3     168
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.9240589581194931
+Regression: Mean absolute error on entire set:  65.94501062542447
+Regression: mean squared error on entire set:  152.1687744071014
+Accuracy on entire set after classification:  0.808726625111309
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9614147909967846; (1196/1244)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9340836012861736; (1162/1244)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9059485530546624; (1127/1244)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8737942122186495; (1087/1244)
+Confusion Matrix:
+[[3220  271   87   14   48]
+ [ 145  126   60   15   34]
+ [  11   56   66   27   35]
+ [  16   38   32   42   40]
+ [   7   18   50   70 1087]]
+--- Performance on FUTURE ---
+y_val (3119,)
+Job counts by bin: queue_minutes_pred_bin
+0    1976
+4     619
+1     356
+2     102
+3      66
+Name: count, dtype: int64
+y_val (3119,)
+Job counts by bin: queue_minutes_pred_bin
+0    1978
+4     644
+1     230
+2     181
+3      86
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.4964165397523549
+Regression: Mean absolute error on entire set:  88.71716676415096
+Regression: mean squared error on entire set:  178.90224434978836
+Accuracy on entire set after classification:  0.7621032382173774
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9579967689822294; (593/619)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9450726978998385; (585/619)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.8998384491114702; (557/619)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8788368336025848; (544/619)
+Confusion Matrix:
+[[1722  182   31   17   26]
+ [ 115   78   23    6    8]
+ [  80   42   28    3   28]
+ [  40   20    8    5   13]
+ [  19   34   12   35  544]]
+
+Starting window 2
+*********************
+Window Start: 2022-04-02 08:05:22; Window End: 2022-05-02 12:02:18; Total Jobs in Window: 31960
+Score with best parameters: 0.8808342748715138
+Best parameters:  {'hgbc_lr__learning_rate': 0.1, 'hgbc_lr__max_depth': 9, 'hgbc_lr__max_iter': 500}
+--- Performance on TEST ---
+y_val (5753,)
+Job counts by bin: queue_minutes_pred_bin
+0    3612
+4    1092
+1     592
+2     284
+3     173
+Name: count, dtype: int64
+y_val (5753,)
+Job counts by bin: queue_minutes_pred_bin
+0    3794
+4    1096
+1     482
+2     235
+3     146
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.878489111148371
+Regression: Mean absolute error on entire set:  47.80908901250655
+Regression: mean squared error on entire set:  109.40668285686878
+Accuracy on entire set after classification:  0.8148791934642795
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9752747252747253; (1065/1092)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9523809523809523; (1040/1092)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9340659340659341; (1020/1092)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8956043956043956; (978/1092)
+Confusion Matrix:
+[[3405  270   71   21   27]
+ [ 175  202   59   21   25]
+ [  28   92   68   27   20]
+ [   2   17   50   35   42]
+ [   2   11   36   69  978]]
+--- Performance on FUTURE ---
+y_val (3196,)
+Job counts by bin: queue_minutes_pred_bin
+0    2172
+1     411
+2     286
+4     164
+3     163
+Name: count, dtype: int64
+y_val (3196,)
+Job counts by bin: queue_minutes_pred_bin
+0    2203
+4     429
+1     227
+2     178
+3     159
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.3196989641853293
+Regression: Mean absolute error on entire set:  73.1093814294804
+Regression: mean squared error on entire set:  151.88947966418743
+Accuracy on entire set after classification:  0.6630162703379224
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9329268292682927; (153/164)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.8658536585365854; (142/164)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.8170731707317073; (134/164)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.725609756097561; (119/164)
+Confusion Matrix:
+[[1888  155  112   37   11]
+ [ 127   52   14   23   11]
+ [  66   36   41   27    8]
+ [  51   53   21   19   15]
+ [  40  115   98   57  119]]
+
+Starting window 3
+*********************
+Window Start: 2022-05-02 12:04:54; Window End: 2022-06-01 15:50:05; Total Jobs in Window: 44785
+Score with best parameters: 0.9195555816928446
+Best parameters:  {'hgbc_lr__learning_rate': 0.1, 'hgbc_lr__max_depth': 9, 'hgbc_lr__max_iter': 400}
+--- Performance on TEST ---
+y_val (8062,)
+Job counts by bin: queue_minutes_pred_bin
+0    5915
+4    1203
+1     623
+2     178
+3     143
+Name: count, dtype: int64
+y_val (8062,)
+Job counts by bin: queue_minutes_pred_bin
+0    6093
+4    1168
+1     386
+2     244
+3     171
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.9099828175390714
+Regression: Mean absolute error on entire set:  48.90781870817569
+Regression: mean squared error on entire set:  121.38806762160999
+Accuracy on entire set after classification:  0.8703795584222277
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9592684954280964; (1154/1203)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9343308395677473; (1124/1203)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.912718204488778; (1098/1203)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8819617622610141; (1061/1203)
+Confusion Matrix:
+[[5719  248   52   25   49]
+ [ 129  171   33   23   30]
+ [  44  108   39   27   26]
+ [  19   68   20   27   37]
+ [   4   28   34   41 1061]]
+--- Performance on FUTURE ---
+y_val (4478,)
+Job counts by bin: queue_minutes_pred_bin
+0    3017
+4     783
+1     506
+2      97
+3      75
+Name: count, dtype: int64
+y_val (4478,)
+Job counts by bin: queue_minutes_pred_bin
+0    3156
+4     717
+1     386
+2     170
+3      49
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.7252761012320976
+Regression: Mean absolute error on entire set:  98.58041435823978
+Regression: mean squared error on entire set:  249.4175298498403
+Accuracy on entire set after classification:  0.8387673068334077
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9450830140485313; (740/783)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9182630906768838; (719/783)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.8939974457215837; (700/783)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8620689655172413; (675/783)
+Confusion Matrix:
+[[2843  214   42   14   43]
+ [ 125  209   19   12   21]
+ [  47   65   19   20   19]
+ [   1    7    6   10   25]
+ [   1   11   11   19  675]]
+
+Starting window 4
+*********************
+Window Start: 2022-06-01 16:12:56; Window End: 2022-07-01 19:51:47; Total Jobs in Window: 25366
+Score with best parameters: 0.9162989896283712
+Best parameters:  {'hgbc_lr__learning_rate': 0.1, 'hgbc_lr__max_depth': 9, 'hgbc_lr__max_iter': 400}
+--- Performance on TEST ---
+y_val (4566,)
+Job counts by bin: queue_minutes_pred_bin
+0    2674
+4     801
+1     638
+2     307
+3     146
+Name: count, dtype: int64
+y_val (4566,)
+Job counts by bin: queue_minutes_pred_bin
+0    2884
+4     819
+1     449
+2     238
+3     176
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.9211811039297328
+Regression: Mean absolute error on entire set:  58.15378327773336
+Regression: mean squared error on entire set:  154.70335374957645
+Accuracy on entire set after classification:  0.7890932982917214
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9600499375780275; (769/801)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9463171036204744; (758/801)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9263420724094882; (742/801)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9026217228464419; (723/801)
+Confusion Matrix:
+[[2529  270   41   12   32]
+ [ 130  226   73    9   11]
+ [   9   98   86   29   16]
+ [   3   35   80   39   19]
+ [   3    9   27   57  723]]
+--- Performance on FUTURE ---
+y_val (2537,)
+Job counts by bin: queue_minutes_pred_bin
+4    806
+0    528
+1    504
+2    354
+3    345
+Name: count, dtype: int64
+y_val (2537,)
+Job counts by bin: queue_minutes_pred_bin
+0    1227
+4     709
+1     272
+2     174
+3     155
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.7707330922531552
+Regression: Mean absolute error on entire set:  209.87749775473708
+Regression: mean squared error on entire set:  410.353518132155
+Accuracy on entire set after classification:  0.5045329128892393
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9330024813895782; (752/806)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.8883374689826302; (716/806)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.8399503722084367; (677/806)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.7630272952853598; (615/806)
+Confusion Matrix:
+[[493 374 155 151  54]
+ [ 23  63  77  73  36]
+ [  1  32  67  35  39]
+ [  2  17  32  42  62]
+ [  9  18  23  44 615]]
+
+Starting window 5
+*********************
+Window Start: 2022-07-01 20:00:29; Window End: 2022-07-31 23:58:14; Total Jobs in Window: 24799
+Score with best parameters: 0.8723296459685796
+Best parameters:  {'hgbc_lr__learning_rate': 0.1, 'hgbc_lr__max_depth': 9, 'hgbc_lr__max_iter': 600}
+--- Performance on TEST ---
+y_val (4464,)
+Job counts by bin: queue_minutes_pred_bin
+0    2445
+4    1034
+1     551
+2     272
+3     162
+Name: count, dtype: int64
+y_val (4464,)
+Job counts by bin: queue_minutes_pred_bin
+0    2649
+4    1038
+1     403
+2     237
+3     137
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.8811189450189244
+Regression: Mean absolute error on entire set:  66.44447960054228
+Regression: mean squared error on entire set:  160.83236833291943
+Accuracy on entire set after classification:  0.7818100358422939
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.97678916827853; (1010/1034)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9477756286266924; (980/1034)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9245647969052224; (956/1034)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8955512572533849; (926/1034)
+Confusion Matrix:
+[[2278  258   67   22   24]
+ [ 126  182   46   19   30]
+ [  26   90   71   26   24]
+ [   5   11   58   33   30]
+ [  10   10   30   62  926]]
+--- Performance on FUTURE ---
+y_val (2480,)
+Job counts by bin: queue_minutes_pred_bin
+0    1520
+4     484
+1     307
+2     116
+3      53
+Name: count, dtype: int64
+y_val (2480,)
+Job counts by bin: queue_minutes_pred_bin
+0    1814
+4     410
+1     156
+2      63
+3      37
+Name: count, dtype: int64
+Regression: r2 score on entire set:  0.34999652957599114
+Regression: Mean absolute error on entire set:  169.73033259497586
+Regression: mean squared error on entire set:  431.43480491246345
+Accuracy on entire set after classification:  0.7213709677419354
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.7747933884297521; (375/484)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.6776859504132231; (328/484)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.6466942148760331; (313/484)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.6157024793388429; (298/484)
+Confusion Matrix:
+[[1442  207   28   28  109]
+ [  49   36   22    2   47]
+ [  18   16   12    2   15]
+ [   1   10   10    1   15]
+ [  10   38   44   20  298]]
+Printing the report of the experiments --------
+              precision    recall  f1-score   support
+
+           0       0.93      0.77      0.84      2626
+           1       0.12      0.38      0.18       210
+           2       0.04      0.13      0.07        69
+           3       0.08      0.19      0.11        48
+           4       0.84      0.60      0.70       629
+
+    accuracy                           0.70      3582
+   macro avg       0.40      0.41      0.38      3582
+weighted avg       0.84      0.70      0.75      3582
+ [[2024  477   53   41   31]
+ [  92   79   24    6    9]
+ [  22   14    9    8   16]
+ [   4    6   13    9   16]
+ [  35   71  101   46  376]] [{'correct': 417, 'incorrect': 31, 'accuracy_score': 0.9308035714285714}, {'correct': 408, 'incorrect': 40, 'accuracy_score': 0.9107142857142857}, {'correct': 392, 'incorrect': 56, 'accuracy_score': 0.875}, {'correct': 376, 'incorrect': 72, 'accuracy_score': 0.8392857142857143}]
+              precision    recall  f1-score   support
+
+           0       0.87      0.87      0.87      1978
+           1       0.22      0.34      0.27       230
+           2       0.27      0.15      0.20       181
+           3       0.08      0.06      0.07        86
+           4       0.88      0.84      0.86       644
+
+    accuracy                           0.76      3119
+   macro avg       0.46      0.45      0.45      3119
+weighted avg       0.77      0.76      0.76      3119
+ [[1722  182   31   17   26]
+ [ 115   78   23    6    8]
+ [  80   42   28    3   28]
+ [  40   20    8    5   13]
+ [  19   34   12   35  544]] [{'correct': 593, 'incorrect': 26, 'accuracy_score': 0.9579967689822294}, {'correct': 585, 'incorrect': 34, 'accuracy_score': 0.9450726978998385}, {'correct': 557, 'incorrect': 62, 'accuracy_score': 0.8998384491114702}, {'correct': 544, 'incorrect': 75, 'accuracy_score': 0.8788368336025848}]
+              precision    recall  f1-score   support
+
+           0       0.87      0.86      0.86      2203
+           1       0.13      0.23      0.16       227
+           2       0.14      0.23      0.18       178
+           3       0.12      0.12      0.12       159
+           4       0.73      0.28      0.40       429
+
+    accuracy                           0.66      3196
+   macro avg       0.40      0.34      0.34      3196
+weighted avg       0.72      0.66      0.68      3196
+ [[1888  155  112   37   11]
+ [ 127   52   14   23   11]
+ [  66   36   41   27    8]
+ [  51   53   21   19   15]
+ [  40  115   98   57  119]] [{'correct': 153, 'incorrect': 11, 'accuracy_score': 0.9329268292682927}, {'correct': 142, 'incorrect': 22, 'accuracy_score': 0.8658536585365854}, {'correct': 134, 'incorrect': 30, 'accuracy_score': 0.8170731707317073}, {'correct': 119, 'incorrect': 45, 'accuracy_score': 0.725609756097561}]
+              precision    recall  f1-score   support
+
+           0       0.94      0.90      0.92      3156
+           1       0.41      0.54      0.47       386
+           2       0.20      0.11      0.14       170
+           3       0.13      0.20      0.16        49
+           4       0.86      0.94      0.90       717
+
+    accuracy                           0.84      4478
+   macro avg       0.51      0.54      0.52      4478
+weighted avg       0.85      0.84      0.84      4478
+ [[2843  214   42   14   43]
+ [ 125  209   19   12   21]
+ [  47   65   19   20   19]
+ [   1    7    6   10   25]
+ [   1   11   11   19  675]] [{'correct': 740, 'incorrect': 43, 'accuracy_score': 0.9450830140485313}, {'correct': 719, 'incorrect': 64, 'accuracy_score': 0.9182630906768838}, {'correct': 700, 'incorrect': 83, 'accuracy_score': 0.8939974457215837}, {'correct': 675, 'incorrect': 108, 'accuracy_score': 0.8620689655172413}]
+              precision    recall  f1-score   support
+
+           0       0.93      0.40      0.56      1227
+           1       0.12      0.23      0.16       272
+           2       0.19      0.39      0.25       174
+           3       0.12      0.27      0.17       155
+           4       0.76      0.87      0.81       709
+
+    accuracy                           0.50      2537
+   macro avg       0.43      0.43      0.39      2537
+weighted avg       0.70      0.50      0.54      2537
+ [[493 374 155 151  54]
+ [ 23  63  77  73  36]
+ [  1  32  67  35  39]
+ [  2  17  32  42  62]
+ [  9  18  23  44 615]] [{'correct': 752, 'incorrect': 54, 'accuracy_score': 0.9330024813895782}, {'correct': 716, 'incorrect': 90, 'accuracy_score': 0.8883374689826302}, {'correct': 677, 'incorrect': 129, 'accuracy_score': 0.8399503722084367}, {'correct': 615, 'incorrect': 191, 'accuracy_score': 0.7630272952853598}]
+              precision    recall  f1-score   support
+
+           0       0.95      0.79      0.87      1814
+           1       0.12      0.23      0.16       156
+           2       0.10      0.19      0.13        63
+           3       0.02      0.03      0.02        37
+           4       0.62      0.73      0.67       410
+
+    accuracy                           0.72      2480
+   macro avg       0.36      0.39      0.37      2480
+weighted avg       0.81      0.72      0.76      2480
+ [[1442  207   28   28  109]
+ [  49   36   22    2   47]
+ [  18   16   12    2   15]
+ [   1   10   10    1   15]
+ [  10   38   44   20  298]] [{'correct': 375, 'incorrect': 109, 'accuracy_score': 0.7747933884297521}, {'correct': 328, 'incorrect': 156, 'accuracy_score': 0.6776859504132231}, {'correct': 313, 'incorrect': 171, 'accuracy_score': 0.6466942148760331}, {'correct': 298, 'incorrect': 186, 'accuracy_score': 0.6157024793388429}]

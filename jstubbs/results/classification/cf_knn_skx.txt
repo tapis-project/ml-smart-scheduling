@@ -1,0 +1,401 @@
+
+
+* * * * * Starting execution for job 0 * * * * *
+Initial total number of jobs:  199744
+Jobs with 0 queue minutes:  57935
+Jobs with queue minutes leq 5:  89998
+Jobs with queue minutes:  57935
+Percentage of jobs with 0 queue minutes:  0.2900462592117911
+Dropping 5831 jobs queued for greater than 2880 minutes (2 days)
+Size of each bin: 60 (minutes)
+Bin 0 minute range: 0 to 60 minutes
+Bin 1 minute range: 60 to 120 minutes
+Bin 2 minute range: 120 to 180 minutes
+Bin 3 minute range: 180 to 240 minutes
+Bin 4 range: Greater than 240 minutes
+First job: 2022-02-01 00:06:58; last job: 2022-07-31 23:58:14
+Job counts by bin: queue_minutes_bin
+0    133603
+4     34888
+1     13259
+2      7206
+3      4957
+Name: count, dtype: int64
+0th df: from 2022-02-01 00:06:58 to 2022-03-03 04:05:20
+1th df: from 2022-03-03 04:08:00 to 2022-04-02 08:02:26
+2th df: from 2022-04-02 08:05:22 to 2022-05-02 12:02:18
+3th df: from 2022-05-02 12:04:54 to 2022-06-01 15:50:05
+4th df: from 2022-06-01 16:12:56 to 2022-07-01 19:51:47
+5th df: from 2022-07-01 20:00:29 to 2022-07-31 23:58:14
+
+Starting window 0
+*********************
+Window Start: 2022-02-01 00:06:58; Window End: 2022-03-03 04:05:20; Total Jobs in Window: 35812
+Found optimal KNN:  {'knn__n_neighbors': 3}
+Score with best parameters: 0.9320897593680992
+Performance on TEST
+Accuracy on entire set:  0.9343779087806392
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.928194297782471; (879/947)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9123548046462513; (864/947)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9049630411826821; (857/947)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.8859556494192186; (839/947)
+Confusion Matrix:
+[[4947   47    9    4   68]
+ [  67  124    9    3   15]
+ [  25    8   63    5    7]
+ [  11    3    4   50   18]
+ [  92   10   12    6  839]]
+Performance on FUTURE
+Accuracy on entire set:  0.536571747627024
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.8398058252427184; (346/412)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.7912621359223301; (326/412)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.7378640776699029; (304/412)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.6650485436893204; (274/412)
+Confusion Matrix:
+[[1645  126   15  774   66]
+ [ 181    0    4    5   20]
+ [  33    6    1    7   22]
+ [  14    2    0    2   30]
+ [ 196   91   15   53  274]]
+
+Starting window 1
+*********************
+Window Start: 2022-03-03 04:08:00; Window End: 2022-04-02 08:02:26; Total Jobs in Window: 31191
+Found optimal KNN:  {'knn__n_neighbors': 2}
+Score with best parameters: 0.8876073310170355
+Performance on TEST
+Accuracy on entire set:  0.9008014247551203
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9876325088339223; (1118/1132)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9787985865724381; (1108/1132)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9743816254416962; (1103/1132)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9664310954063604; (1094/1132)
+Confusion Matrix:
+[[3517   31   12    6   14]
+ [ 133  255   13    4   10]
+ [  41   41  111   10    5]
+ [  27   10   33   81    9]
+ [  66   18   28   46 1094]]
+Performance on FUTURE
+Accuracy on entire set:  0.770759858929144
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9764705882352941; (498/510)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9725490196078431; (496/510)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9352941176470588; (477/510)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9137254901960784; (466/510)
+Confusion Matrix:
+[[1867   84   10    5   12]
+ [ 159   58    8    3    2]
+ [ 117   21    9   15   19]
+ [  62    4    5    4   11]
+ [  84   64   20   10  466]]
+
+Starting window 2
+*********************
+Window Start: 2022-04-02 08:05:22; Window End: 2022-05-02 12:02:18; Total Jobs in Window: 31960
+Found optimal KNN:  {'knn__n_neighbors': 2}
+Score with best parameters: 0.8857936876381001
+Performance on TEST
+Accuracy on entire set:  0.8974448114027463
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9852476290832455; (935/949)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9736564805057956; (924/949)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9662802950474183; (917/949)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9536354056902002; (905/949)
+Confusion Matrix:
+[[3722   42   21    8   14]
+ [ 154  301   19    4   11]
+ [  55   46  136    6    7]
+ [  24    8   23   99   12]
+ [  41   36   29   30  905]]
+Performance on FUTURE
+Accuracy on entire set:  0.6392365456821026
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.5066666666666667; (76/150)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.44; (66/150)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.32; (48/150)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.26; (39/150)
+Confusion Matrix:
+[[1933  170   21    5   74]
+ [ 149   59    4    5   10]
+ [  73   79    3    5   18]
+ [  56   74   11    9    9]
+ [ 104  200   57   29   39]]
+
+Starting window 3
+*********************
+Window Start: 2022-05-02 12:04:54; Window End: 2022-06-01 15:50:05; Total Jobs in Window: 44785
+Found optimal KNN:  {'knn__n_neighbors': 2}
+Score with best parameters: 0.9293533881221896
+Performance on TEST
+Accuracy on entire set:  0.9379806499627884
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9895337773549001; (1040/1051)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9828734538534729; (1033/1051)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9800190294957184; (1030/1051)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.972407231208373; (1022/1051)
+Confusion Matrix:
+[[6088   30   21    3   11]
+ [ 131  248   13    3    7]
+ [  51   39  129    5    3]
+ [  27   19   23   75    8]
+ [  44   18   24   20 1022]]
+Performance on FUTURE
+Accuracy on entire set:  0.739169271996427
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9490740740740741; (615/648)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9104938271604939; (590/648)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9058641975308642; (587/648)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.904320987654321; (586/648)
+Confusion Matrix:
+[[2660  357   98    8   33]
+ [ 282   54   25    0   25]
+ [ 136   21    9    1    3]
+ [  35    6    6    1    1]
+ [  94    5   11   21  586]]
+
+Starting window 4
+*********************
+Window Start: 2022-06-01 16:12:56; Window End: 2022-07-01 19:51:47; Total Jobs in Window: 25366
+Found optimal KNN:  {'knn__n_neighbors': 2}
+Score with best parameters: 0.8696822129120718
+Performance on TEST
+Accuracy on entire set:  0.8681559351730179
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9858557284299858; (697/707)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.983026874115983; (695/707)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9745403111739745; (689/707)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9561527581329562; (676/707)
+Confusion Matrix:
+[[2801   51   20    9   10]
+ [ 157  270   12    3    2]
+ [  39   51  141   14    6]
+ [  22   18   37   76   13]
+ [  42   28   26   42  676]]
+Performance on FUTURE
+Accuracy on entire set:  0.48521876231769806
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.8663729809104258; (590/681)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.8193832599118943; (558/681)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.7518355359765051; (512/681)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.684287812041116; (466/681)
+Confusion Matrix:
+[[688 160 113 175  91]
+ [120  42  33  45  32]
+ [ 67  20  23  18  46]
+ [ 60   7  30  12  46]
+ [119  27  45  52 466]]
+
+Starting window 5
+*********************
+Window Start: 2022-07-01 20:00:29; Window End: 2022-07-31 23:58:14; Total Jobs in Window: 24799
+Found optimal KNN:  {'knn__n_neighbors': 2}
+Score with best parameters: 0.84939792775133
+Performance on TEST
+Accuracy on entire set:  0.8595430107526881
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.9867211440245148; (966/979)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.9775280898876404; (957/979)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.9693564862104188; (949/979)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.9530132788559755; (933/979)
+Confusion Matrix:
+[[2519   57   19    8   13]
+ [ 144  210   18    6    9]
+ [  67   42  106    7    8]
+ [  29   16   24   69   16]
+ [  63   34   22   25  933]]
+Performance on FUTURE
+Accuracy on entire set:  0.7471774193548387
+Accuracy for last bin scheduling assuming bins <= 0 are incorrect: 0.7788844621513944; (391/502)
+Accuracy for last bin scheduling assuming bins <= 1 are incorrect: 0.6713147410358565; (337/502)
+Accuracy for last bin scheduling assuming bins <= 2 are incorrect: 0.6314741035856574; (317/502)
+Accuracy for last bin scheduling assuming bins <= 3 are incorrect: 0.5976095617529881; (300/502)
+Confusion Matrix:
+[[1541   60   35   67  111]
+ [  94    3    4    1   54]
+ [  28    0    9    6   20]
+ [  17    0    3    0   17]
+ [  76   23   10    1  300]]
+              precision    recall  f1-score   support
+
+           0       0.96      0.97      0.97      5075
+           1       0.65      0.57      0.60       218
+           2       0.65      0.58      0.61       108
+           3       0.74      0.58      0.65        86
+           4       0.89      0.87      0.88       959
+
+    accuracy                           0.93      6446
+   macro avg       0.78      0.72      0.74      6446
+weighted avg       0.93      0.93      0.93      6446
+ [[4947   47    9    4   68]
+ [  67  124    9    3   15]
+ [  25    8   63    5    7]
+ [  11    3    4   50   18]
+ [  92   10   12    6  839]] [{'correct': 879, 'incorrect': 68, 'accuracy_score': 0.928194297782471}, {'correct': 864, 'incorrect': 83, 'accuracy_score': 0.9123548046462513}, {'correct': 857, 'incorrect': 90, 'accuracy_score': 0.9049630411826821}, {'correct': 839, 'incorrect': 108, 'accuracy_score': 0.8859556494192186}]
+              precision    recall  f1-score   support
+
+           0       0.80      0.63      0.70      2626
+           1       0.00      0.00      0.00       210
+           2       0.03      0.01      0.02        69
+           3       0.00      0.04      0.00        48
+           4       0.67      0.44      0.53       629
+
+    accuracy                           0.54      3582
+   macro avg       0.30      0.22      0.25      3582
+weighted avg       0.70      0.54      0.61      3582
+ [[1645  126   15  774   66]
+ [ 181    0    4    5   20]
+ [  33    6    1    7   22]
+ [  14    2    0    2   30]
+ [ 196   91   15   53  274]] [{'correct': 346, 'incorrect': 66, 'accuracy_score': 0.8398058252427184}, {'correct': 326, 'incorrect': 86, 'accuracy_score': 0.7912621359223301}, {'correct': 304, 'incorrect': 108, 'accuracy_score': 0.7378640776699029}, {'correct': 274, 'incorrect': 138, 'accuracy_score': 0.6650485436893204}]
+              precision    recall  f1-score   support
+
+           0       0.93      0.98      0.96      3580
+           1       0.72      0.61      0.66       415
+           2       0.56      0.53      0.55       208
+           3       0.55      0.51      0.53       160
+           4       0.97      0.87      0.92      1252
+
+    accuracy                           0.90      5615
+   macro avg       0.75      0.70      0.72      5615
+weighted avg       0.90      0.90      0.90      5615
+ [[3517   31   12    6   14]
+ [ 133  255   13    4   10]
+ [  41   41  111   10    5]
+ [  27   10   33   81    9]
+ [  66   18   28   46 1094]] [{'correct': 1118, 'incorrect': 14, 'accuracy_score': 0.9876325088339223}, {'correct': 1108, 'incorrect': 24, 'accuracy_score': 0.9787985865724381}, {'correct': 1103, 'incorrect': 29, 'accuracy_score': 0.9743816254416962}, {'correct': 1094, 'incorrect': 38, 'accuracy_score': 0.9664310954063604}]
+              precision    recall  f1-score   support
+
+           0       0.82      0.94      0.88      1978
+           1       0.25      0.25      0.25       230
+           2       0.17      0.05      0.08       181
+           3       0.11      0.05      0.07        86
+           4       0.91      0.72      0.81       644
+
+    accuracy                           0.77      3119
+   macro avg       0.45      0.40      0.42      3119
+weighted avg       0.74      0.77      0.75      3119
+ [[1867   84   10    5   12]
+ [ 159   58    8    3    2]
+ [ 117   21    9   15   19]
+ [  62    4    5    4   11]
+ [  84   64   20   10  466]] [{'correct': 498, 'incorrect': 12, 'accuracy_score': 0.9764705882352941}, {'correct': 496, 'incorrect': 14, 'accuracy_score': 0.9725490196078431}, {'correct': 477, 'incorrect': 33, 'accuracy_score': 0.9352941176470588}, {'correct': 466, 'incorrect': 44, 'accuracy_score': 0.9137254901960784}]
+              precision    recall  f1-score   support
+
+           0       0.93      0.98      0.95      3807
+           1       0.70      0.62      0.65       489
+           2       0.60      0.54      0.57       250
+           3       0.67      0.60      0.63       166
+           4       0.95      0.87      0.91      1041
+
+    accuracy                           0.90      5753
+   macro avg       0.77      0.72      0.74      5753
+weighted avg       0.89      0.90      0.89      5753
+ [[3722   42   21    8   14]
+ [ 154  301   19    4   11]
+ [  55   46  136    6    7]
+ [  24    8   23   99   12]
+ [  41   36   29   30  905]] [{'correct': 935, 'incorrect': 14, 'accuracy_score': 0.9852476290832455}, {'correct': 924, 'incorrect': 25, 'accuracy_score': 0.9736564805057956}, {'correct': 917, 'incorrect': 32, 'accuracy_score': 0.9662802950474183}, {'correct': 905, 'incorrect': 44, 'accuracy_score': 0.9536354056902002}]
+              precision    recall  f1-score   support
+
+           0       0.83      0.88      0.86      2203
+           1       0.10      0.26      0.15       227
+           2       0.03      0.02      0.02       178
+           3       0.17      0.06      0.08       159
+           4       0.26      0.09      0.13       429
+
+    accuracy                           0.64      3196
+   macro avg       0.28      0.26      0.25      3196
+weighted avg       0.63      0.64      0.62      3196
+ [[1933  170   21    5   74]
+ [ 149   59    4    5   10]
+ [  73   79    3    5   18]
+ [  56   74   11    9    9]
+ [ 104  200   57   29   39]] [{'correct': 76, 'incorrect': 74, 'accuracy_score': 0.5066666666666667}, {'correct': 66, 'incorrect': 84, 'accuracy_score': 0.44}, {'correct': 48, 'incorrect': 102, 'accuracy_score': 0.32}, {'correct': 39, 'incorrect': 111, 'accuracy_score': 0.26}]
+              precision    recall  f1-score   support
+
+           0       0.96      0.99      0.97      6153
+           1       0.70      0.62      0.66       402
+           2       0.61      0.57      0.59       227
+           3       0.71      0.49      0.58       152
+           4       0.97      0.91      0.94      1128
+
+    accuracy                           0.94      8062
+   macro avg       0.79      0.71      0.75      8062
+weighted avg       0.93      0.94      0.94      8062
+ [[6088   30   21    3   11]
+ [ 131  248   13    3    7]
+ [  51   39  129    5    3]
+ [  27   19   23   75    8]
+ [  44   18   24   20 1022]] [{'correct': 1040, 'incorrect': 11, 'accuracy_score': 0.9895337773549001}, {'correct': 1033, 'incorrect': 18, 'accuracy_score': 0.9828734538534729}, {'correct': 1030, 'incorrect': 21, 'accuracy_score': 0.9800190294957184}, {'correct': 1022, 'incorrect': 29, 'accuracy_score': 0.972407231208373}]
+              precision    recall  f1-score   support
+
+           0       0.83      0.84      0.84      3156
+           1       0.12      0.14      0.13       386
+           2       0.06      0.05      0.06       170
+           3       0.03      0.02      0.03        49
+           4       0.90      0.82      0.86       717
+
+    accuracy                           0.74      4478
+   macro avg       0.39      0.37      0.38      4478
+weighted avg       0.74      0.74      0.74      4478
+ [[2660  357   98    8   33]
+ [ 282   54   25    0   25]
+ [ 136   21    9    1    3]
+ [  35    6    6    1    1]
+ [  94    5   11   21  586]] [{'correct': 615, 'incorrect': 33, 'accuracy_score': 0.9490740740740741}, {'correct': 590, 'incorrect': 58, 'accuracy_score': 0.9104938271604939}, {'correct': 587, 'incorrect': 61, 'accuracy_score': 0.9058641975308642}, {'correct': 586, 'incorrect': 62, 'accuracy_score': 0.904320987654321}]
+              precision    recall  f1-score   support
+
+           0       0.92      0.97      0.94      2891
+           1       0.65      0.61      0.63       444
+           2       0.60      0.56      0.58       251
+           3       0.53      0.46      0.49       166
+           4       0.96      0.83      0.89       814
+
+    accuracy                           0.87      4566
+   macro avg       0.73      0.69      0.71      4566
+weighted avg       0.86      0.87      0.86      4566
+ [[2801   51   20    9   10]
+ [ 157  270   12    3    2]
+ [  39   51  141   14    6]
+ [  22   18   37   76   13]
+ [  42   28   26   42  676]] [{'correct': 697, 'incorrect': 10, 'accuracy_score': 0.9858557284299858}, {'correct': 695, 'incorrect': 12, 'accuracy_score': 0.983026874115983}, {'correct': 689, 'incorrect': 18, 'accuracy_score': 0.9745403111739745}, {'correct': 676, 'incorrect': 31, 'accuracy_score': 0.9561527581329562}]
+              precision    recall  f1-score   support
+
+           0       0.65      0.56      0.60      1227
+           1       0.16      0.15      0.16       272
+           2       0.09      0.13      0.11       174
+           3       0.04      0.08      0.05       155
+           4       0.68      0.66      0.67       709
+
+    accuracy                           0.49      2537
+   macro avg       0.33      0.32      0.32      2537
+weighted avg       0.53      0.49      0.51      2537
+ [[688 160 113 175  91]
+ [120  42  33  45  32]
+ [ 67  20  23  18  46]
+ [ 60   7  30  12  46]
+ [119  27  45  52 466]] [{'correct': 590, 'incorrect': 91, 'accuracy_score': 0.8663729809104258}, {'correct': 558, 'incorrect': 123, 'accuracy_score': 0.8193832599118943}, {'correct': 512, 'incorrect': 169, 'accuracy_score': 0.7518355359765051}, {'correct': 466, 'incorrect': 215, 'accuracy_score': 0.684287812041116}]
+              precision    recall  f1-score   support
+
+           0       0.89      0.96      0.93      2616
+           1       0.58      0.54      0.56       387
+           2       0.56      0.46      0.51       230
+           3       0.60      0.45      0.51       154
+           4       0.95      0.87      0.91      1077
+
+    accuracy                           0.86      4464
+   macro avg       0.72      0.66      0.68      4464
+weighted avg       0.85      0.86      0.85      4464
+ [[2519   57   19    8   13]
+ [ 144  210   18    6    9]
+ [  67   42  106    7    8]
+ [  29   16   24   69   16]
+ [  63   34   22   25  933]] [{'correct': 966, 'incorrect': 13, 'accuracy_score': 0.9867211440245148}, {'correct': 957, 'incorrect': 22, 'accuracy_score': 0.9775280898876404}, {'correct': 949, 'incorrect': 30, 'accuracy_score': 0.9693564862104188}, {'correct': 933, 'incorrect': 46, 'accuracy_score': 0.9530132788559755}]
+              precision    recall  f1-score   support
+
+           0       0.88      0.85      0.86      1814
+           1       0.03      0.02      0.02       156
+           2       0.15      0.14      0.15        63
+           3       0.00      0.00      0.00        37
+           4       0.60      0.73      0.66       410
+
+    accuracy                           0.75      2480
+   macro avg       0.33      0.35      0.34      2480
+weighted avg       0.75      0.75      0.75      2480
+ [[1541   60   35   67  111]
+ [  94    3    4    1   54]
+ [  28    0    9    6   20]
+ [  17    0    3    0   17]
+ [  76   23   10    1  300]] [{'correct': 391, 'incorrect': 111, 'accuracy_score': 0.7788844621513944}, {'correct': 337, 'incorrect': 165, 'accuracy_score': 0.6713147410358565}, {'correct': 317, 'incorrect': 185, 'accuracy_score': 0.6314741035856574}, {'correct': 300, 'incorrect': 202, 'accuracy_score': 0.5976095617529881}]
